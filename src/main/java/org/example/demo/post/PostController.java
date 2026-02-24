@@ -16,4 +16,10 @@ public class PostController {
         postService.create(dto);
         return ResponseEntity.ok("게시글 작성 성공");
     }
+
+    @GetMapping("/read/{id}")
+    public ResponseEntity<PostDto.ReadRes> read(@PathVariable Long id) {
+        PostDto.ReadRes res = postService.read(id);
+        return ResponseEntity.ok(res);
+    }
 }
