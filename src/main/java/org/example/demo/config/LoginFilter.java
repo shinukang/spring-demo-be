@@ -25,6 +25,7 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
         this.setFilterProcessesUrl("/user/login");
     }
 
+
     // 인증(로그인) 시도
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {

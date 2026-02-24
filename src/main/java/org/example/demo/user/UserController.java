@@ -1,5 +1,6 @@
 package org.example.demo.user;
 
+import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.example.demo.user.model.UserDto;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity signup(@RequestBody UserDto.SignupReq dto) {
+    public ResponseEntity signup(@RequestBody UserDto.SignupReq dto) throws MessagingException {
         userService.signup(dto);
         return ResponseEntity.ok("회원가입 성공");
     }
