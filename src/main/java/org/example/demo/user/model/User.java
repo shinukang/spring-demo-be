@@ -1,10 +1,7 @@
 package org.example.demo.user.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Getter
@@ -20,5 +17,6 @@ public class User {
     private String email;
     private String password;
     private String role;
+    @Setter
     private Boolean enable;
 }
