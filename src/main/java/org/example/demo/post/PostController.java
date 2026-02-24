@@ -22,4 +22,10 @@ public class PostController {
         PostDto.ReadRes res = postService.read(id);
         return ResponseEntity.ok(res);
     }
+
+    @GetMapping("/list")
+    public ResponseEntity<PostDto.ListRes> list() {
+        PostDto.ListRes res = postService.list();
+        return ResponseEntity.ok(res);
+    }
 }

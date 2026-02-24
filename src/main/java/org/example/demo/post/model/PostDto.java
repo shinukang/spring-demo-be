@@ -3,6 +3,9 @@ package org.example.demo.post.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+
+import java.util.List;
 
 public class PostDto {
 
@@ -35,5 +38,12 @@ public class PostDto {
                     .contents(entity.getContents())
                     .build();
         }
+    }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class ListRes {
+        private List<ReadRes> list;
     }
 }
