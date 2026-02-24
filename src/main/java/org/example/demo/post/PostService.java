@@ -25,4 +25,8 @@ public class PostService {
                 .list(entities.stream().map(PostDto.ReadRes::fromEntity).toList())
                 .build();
     }
+    public void delete(Long id) {
+        Post entity = postRepository.findById(id).orElseThrow();
+        postRepository.delete(entity);
+    }
 }
