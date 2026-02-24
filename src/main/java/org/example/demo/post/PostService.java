@@ -1,5 +1,6 @@
 package org.example.demo.post;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.example.demo.post.model.Post;
 import org.example.demo.post.model.PostDto;
@@ -28,5 +29,11 @@ public class PostService {
     public void delete(Long id) {
         Post entity = postRepository.findById(id).orElseThrow();
         postRepository.delete(entity);
+    }
+
+    @Transactional
+    public void update(PostDto.UpdateReq dto) {
+        Post entity = postRepository.findById(dto.getId()).orElseThrow();
+        entity.update(dto.getTitle(), dto.getContents());
     }
 }

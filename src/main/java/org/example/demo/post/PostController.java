@@ -34,4 +34,10 @@ public class PostController {
         postService.delete(id);
         return ResponseEntity.ok("게시글 삭제 성공");
     }
+
+    @PostMapping("/update")
+    public ResponseEntity update(@RequestBody PostDto.UpdateReq dto) {
+        postService.update(dto);
+        return ResponseEntity.ok("게시글 수정 성공");
+    }
 }
