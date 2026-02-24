@@ -28,4 +28,10 @@ public class PostController {
         PostDto.ListRes res = postService.list();
         return ResponseEntity.ok(res);
     }
+
+    @GetMapping("/delete/{id}")
+    public ResponseEntity delete(@PathVariable Long id) {
+        postService.delete(id);
+        return ResponseEntity.ok("게시글 삭제 성공");
+    }
 }
