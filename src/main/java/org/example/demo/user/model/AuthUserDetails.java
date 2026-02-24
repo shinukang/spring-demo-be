@@ -12,6 +12,7 @@ import java.util.List;
 @Getter
 @Builder
 public class AuthUserDetails implements UserDetails {
+    private Long id;
     private String username;
     private String password;
     private Boolean enable;
@@ -19,6 +20,7 @@ public class AuthUserDetails implements UserDetails {
 
     public static AuthUserDetails fromEntity(User entity) {
         return AuthUserDetails.builder()
+                .id(entity.getId())
                 .username(entity.getEmail())
                 .password(entity.getPassword())
                 .build();

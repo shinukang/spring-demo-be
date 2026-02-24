@@ -5,7 +5,9 @@ import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import org.example.demo.user.model.AuthUserDetails;
 import org.example.demo.user.model.UserDto;
+import org.example.demo.util.JwtUtil;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -38,7 +40,9 @@ public class LoginFilter extends UsernamePasswordAuthenticationFilter {
     // 인증(로그인) 성공
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException, ServletException {
-        super.successfulAuthentication(request, response, chain, authResult);
+        AuthUserDetails user = (AuthUserDetails) authResult.getPrincipal();
+        String jwt = JwtUtil.createToken(user.getId(), user.getUsername(), user.getRole());
+        response.setHeader("Set-Cookie", "ATOKEN="+jwt+"; Path=/");
     }
 
     // 인증(로그인) 실패
