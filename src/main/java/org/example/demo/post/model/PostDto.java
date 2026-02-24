@@ -46,4 +46,13 @@ public class PostDto {
     public static class ListRes {
         private List<ReadRes> list;
     }
+
+    @Getter
+    @AllArgsConstructor
+    @Builder
+    public static class UpdateReq {
+        private Long id;
+        private String title;
+        private String contents;
+    }
 }
